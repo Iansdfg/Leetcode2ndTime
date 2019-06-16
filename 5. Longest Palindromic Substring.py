@@ -6,16 +6,18 @@ class Solution(object):
         """
         ans = ''
         for i in range(len(s)):
-            pal1 = self.palindrome(s,i,i)
-            if len(pal1) > len(ans): ans = pal1
-            pal2 = self.palindrome(s,i, i + 1)
-            if len(pal2) > len(ans): ans = pal2
+            even = self.palindrome(s, i, i)
+            if len(even)>len(ans):
+                ans = even
+            odd = self.palindrome(s, i, i+1)
+            if len(odd)>len(ans):
+                ans = odd
         return ans
-        
-    def palindrome(self,s,left,right):
-        while left >= 0 and right < len(s) and s[left] == s[right]:
-            left -= 1
-            right += 1
-        return s[left+1:right]
-        
-        
+            
+    def palindrome(self, s, l, r):
+        while l>=0 and r<len(s) and s[l]==s[r]:
+            l-=1
+            r+=1
+        return s[l+1:r]
+            
+            
