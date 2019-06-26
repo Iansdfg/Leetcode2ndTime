@@ -4,10 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        res = float('-inf')
-        summ = 0
+        res, summ = float('-inf'), 0
         for num in nums:
-            summ = max(summ + num, num)
+            summ = max(num, num+summ)
             res = max(res, summ)
         return res
         
