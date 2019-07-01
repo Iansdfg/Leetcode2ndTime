@@ -4,12 +4,10 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        if len(prices) == 0 :return 0
-        low = prices[0]
-        res = 0
+        if len(prices) == 0: return 0
+        lowest ,res = prices[0], 0
         for price in prices:
-            if price<low:
-                low = price
-            res = max(res,price-low)
+            if lowest>price:
+                lowest = price
+            res = max(price-lowest, res)
         return res
-        
