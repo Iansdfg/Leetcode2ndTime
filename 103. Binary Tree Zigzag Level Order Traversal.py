@@ -13,16 +13,16 @@ class Solution(object):
         """
         res = []
         self.levelOrder(root, 0, res)
-        for pos, val in enumerate(res):
-            if pos%2:
-                val[:] = val[::-1]
         return res
     
     def levelOrder(self, root, level, res):
         if root:
             if level >= len(res):
                 res.append([])
-            res[level].append(root.val)
+            if level%2:
+                res[level] = [root.val]+res[level] 
+            else:   
+                res[level].append(root.val)
             self.levelOrder(root.left, level+1, res)
             self.levelOrder(root.right, level+1, res)
         
