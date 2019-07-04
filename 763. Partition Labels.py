@@ -4,15 +4,16 @@ class Solution(object):
         :type S: str
         :rtype: List[int]
         """
-        indx = dict()
-        lastAppearPos = 0
-        anchor = 0
+        last_appear = {}
+        last_pos, anchor = 0, 0
         res = []
-        for pos, value in enumerate(S):
-            indx[value] = pos
-        for pos, value in enumerate(S):
-            lastAppearPos = max(lastAppearPos, indx[value])
-            if pos == lastAppearPos:
+        for pos, char in enumerate(S):
+            last_appear[char] = pos 
+        for pos, char in enumerate(S):
+            last_pos = max(last_pos, last_appear[char])
+            if pos == last_pos:
                 res.append(pos-anchor+1)
                 anchor = pos+1
         return res
+                
+            
