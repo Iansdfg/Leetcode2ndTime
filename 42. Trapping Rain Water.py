@@ -20,7 +20,6 @@
 #         for i in range(1, size):
 #             ans += min(left_max[i], right_max[i])-height[i]
 #         return ans
-
 class Solution(object):
     def trap(self, height):
         """
@@ -30,14 +29,14 @@ class Solution(object):
         max_left, max_right, res = 0,0,0
         l,r = 0, len(height)-1
         while l<r:
-            if height[r] >= height[l]:
+            if height[l]<=height[r]:
                 max_left = max(max_left, height[l])
-                res+=max_left-height[l]
+                res+= max_left- height[l]
                 l+=1
             else:
                 max_right = max(max_right, height[r])
-                res+=max_right-height[r]
+                res+= max_right - height[r]
                 r-=1
         return res
-                
+ 
             
