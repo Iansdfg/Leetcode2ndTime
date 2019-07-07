@@ -8,15 +8,14 @@ class Solution(object):
         """
         wordset = set(wordList)
         bfs = collections.deque()
-        bfs.append((beginWord, 1))
+        bfs.append((beginWord,1))
         while bfs:
-            curr, length= bfs.popleft()
-            if curr == endWord:
-                return length
+            curr,lenth = bfs.popleft()
+            if curr == endWord:return lenth
             for i in range(len(curr)):
                 for c in "abcdefghijklmnopqrstuvwxyz":
                     new = curr[:i]+c+curr[i+1:]
                     if new in wordset and new != curr:
                         wordset.remove(new)
-                        bfs.append((new,length+1))
+                        bfs.append((new, lenth+1))
         return 0
