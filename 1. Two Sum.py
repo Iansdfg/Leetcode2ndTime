@@ -11,4 +11,3 @@ class Solution(object):
                 dic[target-val] = pos
             else:
                 return [dic[val], pos]
-        
