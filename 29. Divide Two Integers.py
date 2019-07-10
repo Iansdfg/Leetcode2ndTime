@@ -8,15 +8,15 @@ class Solution(object):
         sign = 1 if dividend*divisor>0 else -1
         dividend = abs(dividend); divisor = abs(divisor)
         if sign == 1 and dividend < divisor:return 0
-        summ,count,res = 0,0,0
-        while dividend >= divisor:
+        summ,res = 0,0
+        while dividend>=divisor:
             summ = divisor
             count = 1
-            while summ + summ <= dividend:
-                summ += summ
-                count += count
-            dividend -= summ
-            res += count
+            while summ+summ<=dividend:
+                summ+=summ
+                count+=count
+            dividend-=summ
+            res+=count
         if sign*res>=2147483647:
             return 2147483647
         elif sign*res<=-2147483648:
