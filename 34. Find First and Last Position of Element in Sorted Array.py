@@ -7,7 +7,6 @@ class Solution(object):
         """
         left = self.lower(nums, target)
         right = self.higer(nums, target)
-        # print(left,right)
         if right == left:
             return [-1, -1]
         return [left, right - 1]
