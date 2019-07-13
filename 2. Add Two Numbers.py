@@ -24,5 +24,3 @@ class Solution(object):
             curr = curr.next
             value = value//10
         return res.next
-            
-        
