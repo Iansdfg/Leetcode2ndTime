@@ -10,7 +10,6 @@ class Solution(object):
         if right == left:
             return [-1, -1]
         return [left, right - 1]
-        
     def lower(self, nums, target):
         l,r = 0,len(nums)
         while l<r:
@@ -20,7 +19,6 @@ class Solution(object):
             else:
                 r = m
         return l
-    
     def higer(self, nums, target):
         l,r = 0,len(nums)
         while l<r:
@@ -30,4 +28,3 @@ class Solution(object):
             else:
                 r = m
         return l
-                
