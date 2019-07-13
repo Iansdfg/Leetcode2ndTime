@@ -12,6 +12,3 @@ class Solution(object):
             chars[value] = pos
             res = max(res, pos-start +1)
         return res
-            
-        
-        
