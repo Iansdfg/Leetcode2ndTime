@@ -11,6 +11,16 @@ class Solution(object):
             return [-1, -1]
         return [left, right - 1]
     
+    def lower(self, nums, target):
+        l,r = 0,len(nums)
+        while l<r:
+            m = (r+l)//2
+            if nums[m]<target:
+                l = m+1
+            else:
+                r = m
+        return l
+    
     def higer(self, nums, target):
         l,r = 0,len(nums)
         while l<r:
@@ -21,12 +31,3 @@ class Solution(object):
                 r = m
         return l
 
-    def lower(self, nums, target):
-        l,r = 0,len(nums)
-        while l<r:
-            m = (r+l)//2
-            if nums[m]<target:
-                l = m+1
-            else:
-                r = m
-        return l
