@@ -21,16 +21,14 @@ class Solution(object):
         return True
     
     def validSqr(self, board):
-        n = len(board)
-        for r in range(0, n, 3):
-            for c in range(0, n, 3):
-                cell = []
+        for row in range(0, len(board),3):
+            for col in range(0, len(board),3):
+                thisSqr = []
                 for i in range(3):
                     for j in range(3):
-                        num = board[r + i][c + j]
-                        if num != '.':
-                            cell.append(num)
-                if len(set(cell)) != len(cell):
+                        if board[row+i][col+j]!='.':
+                            thisSqr.append(board[row+i][col+j])
+                if len(set(thisSqr)) != len(thisSqr):
                     return False
         return True
 
