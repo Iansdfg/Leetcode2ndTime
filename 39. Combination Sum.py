@@ -6,16 +6,17 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        self.findSum(candidates, target, [],res)
+        candidates.sort()
+        self.dfs(candidates, target, 0, res, [])
         return res
     
-    def findSum(self, candidates, target, path,res):
-        if sum(path)>target:
+    def dfs(self, candidates, target, depth, res, path):
+        if target<0:
             return 
-        if sum(path)==target:
+        if target==0:
             res.append(path)
             return 
-        for i in xrange(len(candidates)):
-            self.findSum(candidates[i:], target, path+[candidates[i]],res)
-        
-        
+        for i in range(depth, len(candidates)):
+            if candidates[depth]>target:
+                return 
+            self.dfs(candidates, target-candidates[i], i, res, path+[candidates[i]])
