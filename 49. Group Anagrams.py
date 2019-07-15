@@ -5,17 +5,12 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         dic = {}
-        res = []
-        for word in strs:
-            sortedword = ''.join(sorted(word))
-            if sortedword not in dic:
-                dic[sortedword] = [word]
-            else:
-                dic[sortedword] += [word]
-        res = []
-        for value in dic.values():
-            res.append(value)
+        res =[]
+        for ele in strs:
+            sortedstr = "".join(sorted(ele))
+            dic[sortedstr] = [ele] if sortedstr not in dic else dic[sortedstr]+[ele]
+        for val in dic.values():
+            res.append(val)
         return res
-                
             
         
