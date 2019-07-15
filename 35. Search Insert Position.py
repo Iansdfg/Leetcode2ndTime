@@ -7,8 +7,15 @@ class Solution(object):
         """
         if not nums: return 0
         if target>nums[-1]:return len(nums)
-        for pos, val in enumerate(nums):
-            if val == target or val > target:
-                return pos
+        l,r = 0, len(nums)
+        while l<=r:
+            m = (r+l)//2
+            if nums[m] == target:
+                return m
+            elif nums[m] < target:
+                l = m+1
+            else:
+                r = m -1
+        return l
 
         
