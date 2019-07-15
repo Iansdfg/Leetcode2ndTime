@@ -5,29 +5,30 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        left = self.lower(nums, target)
-        right = self.higer(nums, target)
-        if right == left:
-            return [-1, -1]
-        return [left, right - 1]
+        left = self.findlower(nums, target)
+        right = self.findhigher(nums, target)
+        if left == right:
+            return [-1,-1]
+        return [left,right-1]
     
-    def lower(self, nums, target):
-        l,r = 0,len(nums)
+    def findlower(self, nums, target):
+        l,r = 0, len(nums)
         while l<r:
-            m = (r+l)//2
+            m = (l+r)//2
             if nums[m]<target:
-                l = m+1
+                l = m +1
             else:
                 r = m
         return l
     
-    def higer(self, nums, target):
-        l,r = 0,len(nums)
+    def findhigher(self, nums, target):
+        l,r = 0, len(nums)
         while l<r:
-            m = (r+l)//2
+            m = (l+r)//2
             if nums[m]<=target:
-                l = m+1
+                l = m +1
             else:
                 r = m
         return l
-
+                
+                
