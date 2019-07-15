@@ -5,14 +5,15 @@ class Solution(object):
         :rtype: str
         """
         res = '1'
-        for _ in xrange(n-1):
-            new_res, pre, count = '', res[0], 0
-            for pos in xrange(len(res)):
+        for _ in range(n-1):
+            temp, pre, cnt = '', res[0], 0
+            for pos in range(len(res)):
                 if res[pos] == pre:
-                    count += 1
+                    cnt +=1
                 else:
-                    new_res += str(count) + pre
-                    count = 1
+                    temp+= str(cnt)+pre
+                    cnt = 1
                     pre = res[pos]
-            res = new_res + str(count) + pre
+            res = temp+str(cnt)+pre
         return res
+    
