@@ -5,15 +5,14 @@ class Solution(object):
         :rtype: str
         """
         res = '1'
-        for i in range(n-1):
-            temp_res = ''
-            pos = 0
-            while pos<len(res):
-                count = 1
-                while pos<len(res)-1 and res[pos] == res[pos+1]:
-                    pos +=1 
-                    count+=1
-                temp_res = temp_res + str(count)+res[pos]
-                pos +=1
-            res = temp_res
+        for _ in xrange(n-1):
+            new_res, pre, count = '', res[0], 0
+            for pos in xrange(len(res)):
+                if res[pos] == pre:
+                    count += 1
+                else:
+                    new_res += str(count) + pre
+                    count = 1
+                    pre = res[pos]
+            res = new_res + str(count) + pre
         return res
