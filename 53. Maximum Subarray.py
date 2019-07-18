@@ -11,35 +11,39 @@
 #         return res
         
 class Solution(object):
-    def cross_sum(self, nums, l, r, m):
-        if l==r: return nums[l]
-        
-        left_sum = float('-inf')
-        curr_sum = 0
-        for i in range(m,l-1,-1):
-            curr_sum += nums[i]
-            left_sum = max(curr_sum, left_sum)
-        
-        right_sum = float('-inf')
-        curr_sum = 0
-        for i in range(m+1, r + 1):
-            curr_sum += nums[i]
-            right_sum = max(curr_sum, right_sum)
-        return right_sum+left_sum
-        
-    def helper(self, nums, l, r):
-        if l==r: return nums[l]
-        m = (l+r)//2
-        sumL = self.helper(nums, l, m)
-        sumR = self.helper(nums, m+1, r)
-        sumCro =self.cross_sum(nums, l, r, m)
-        
-        return max(sumL,sumR,sumCro )
-        
     def maxSubArray(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
         return self.helper(nums, 0, len(nums)-1)
+     
+    def cross_sum(self, nums, left, right, p): 
+            if left == right:
+                return nums[left]
+
+            left_subsum = float('-inf')
+            curr_sum = 0
+            for i in range(p, left - 1, -1):
+                curr_sum += nums[i]
+                left_subsum = max(left_subsum, curr_sum)
+
+            right_subsum = float('-inf')
+            curr_sum = 0
+            for i in range(p + 1, right + 1):
+                curr_sum += nums[i]
+                right_subsum = max(right_subsum, curr_sum)
+
+            return left_subsum + right_subsum   
+    
+    def helper(self, nums, left, right): 
+        if left == right:
+            return nums[left]
         
+        p = (left + right) // 2
+            
+        left_sum = self.helper(nums, left, p)
+        right_sum = self.helper(nums, p + 1, right)
+        cross_sum = self.cross_sum(nums, left, right, p)
+        
+        return max(left_sum, right_sum, cross_sum)
