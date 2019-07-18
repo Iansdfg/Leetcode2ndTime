@@ -21,4 +21,3 @@ class Solution(object):
             prev = prev.next
         prev.next = prev.next.next
         return dummy.next
-        
