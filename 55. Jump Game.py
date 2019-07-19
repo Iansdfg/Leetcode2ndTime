@@ -6,7 +6,7 @@ class Solution(object):
         """
         reach = nums[0]
         i = 1
-        while i < len(nums) and reach >= i:
+        for i in xrange(len(nums)):
+            if reach<i: return False
             reach = max(reach, i + nums[i])
-            i += 1
-        return reach >= (len(nums)-1)
+        return reach >= len(nums)-1
