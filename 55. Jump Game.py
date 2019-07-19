@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: bool
         """
         reach = nums[0]
-        i = 1
         for i in xrange(len(nums)):
             if reach<i: return False
             reach = max(reach, i + nums[i])
