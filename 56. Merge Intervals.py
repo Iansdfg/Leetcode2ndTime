@@ -4,16 +4,15 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        intervals.sort(key = lambda x:x[0])
-        res=[]
-        for pos, ele in enumerate(intervals):
+        intervals.sort()
+        res = []
+        for pos, interval in enumerate(intervals):
             if res == []:
-                res.append(ele)
+                res.append(interval)
             else:
-                if ele[0]<=res[-1][1]:
-                    res[-1][:] = [res[-1][0]]+[max(ele[1],res[-1][1])]
+                if interval[0]<=res[-1][1]:
+                    res[-1][:] = [res[-1][0]]+[max(res[-1][1],interval[1] )]
                 else:
-                    res.append(ele)
+                    res.append(interval)
         return res
-            
-            
+        
