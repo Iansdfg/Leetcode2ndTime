@@ -19,4 +19,3 @@ class Solution(object):
                 k%=frac
                 frac//=i
         return res
-            
