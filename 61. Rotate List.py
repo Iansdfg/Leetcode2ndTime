@@ -19,13 +19,10 @@ class Solution(object):
             curr = curr.next
         k = k%count
         while k:
-            if not fast:
-                fast = head
             fast = fast.next
             count+=1
             k-=1
-        if not fast:
-            return head
+        if not fast: return head
         while fast.next:
             fast = fast.next
             slow = slow.next
