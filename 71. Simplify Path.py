@@ -11,7 +11,5 @@ class Solution(object):
                 stack.pop()
             elif ele!='' and ele!='.' and ele  != '..':
                 stack.append(ele)
-        stack+=['']
-        res = '/'.join(stack)
-        res = '/'+res[:-1]
-        return res
+        return '/'+'/'.join(stack)
+                
