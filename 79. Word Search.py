@@ -5,26 +5,19 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        if not board or not board[0]: return False
-        m,n = len(board), len(board[0])
-        for i in range(m):
-            for j in range(n):
-                if self.dfs(i, j, 0, board, word): return True
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if self.findNext(i,j, board, word):return True
         return False
 
-    def dfs(self,x, y , i, board, word):
-        if i == len(word):
-            return True
-        m,n = len(board), len(board[0])
-        if x>=m or y>=n or x<0 or y < 0 or board[x][y]!=word[i]:
-            return False
-        value = board[x][y]
-        board[x][y] = "#"
-        res = self.dfs(x+1, y , i+1, board, word) or self.dfs(x, y+1 , i+1, board, word) or self.dfs(x-1, y , i+1, board, word)  or self.dfs(x, y-1 , i+1, board, word) 
-        board[x][y] = value
+    def findNext(self, i,j, board, word):
+        if len(word)==0: return True
+        if  i<0 or j<0 or i>= len(board) or j>= len(board[0]) or board[i][j]!=word[0]:return False
+        tmp = board[i][j]
+        board[i][j] = "#"
+        res =  self.findNext(i+1,j,board, word[1:]) or self.findNext(i-1,j,board, word[1:]) or self.findNext(i,j+1,board, word[1:]) or self.findNext(i,j-1,board, word[1:])
+        board[i][j] = tmp
         return res
         
-                    
-                
         
         
