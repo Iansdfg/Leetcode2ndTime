@@ -14,3 +14,4 @@ class Solution(object):
                 nums[slow] = nums[fast]
                 fast += 1       
         return slow+1
+    
