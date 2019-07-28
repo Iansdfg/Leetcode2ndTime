@@ -10,8 +10,9 @@ class Solution(object):
         return res
     
     def findSub(self,nums, depth, path, res ):
-        if path not in res:
-            res.append(path)
+        res.append(path)
         for i in range(depth, len(nums)):
+            if i>depth and nums[i]==nums[i-1]:
+                continue
             self.findSub(nums, i+1, path+[nums[i]], res)
         
