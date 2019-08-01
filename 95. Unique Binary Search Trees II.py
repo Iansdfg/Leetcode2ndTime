@@ -8,7 +8,7 @@ class Solution:
         return self.findTree(1, n)
     
     def findTree(self,left, right):
-        if left>right:
+        if left > right:
             return [None]
         res = []
         for i in range(left, right+1):
